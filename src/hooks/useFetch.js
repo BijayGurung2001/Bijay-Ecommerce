@@ -10,7 +10,7 @@ function useFetch(url){
             const fetchdata=async()=>{
             try {
                 const result=await fetch(url);
-        const data=result.json;
+        const data=await result.json();
         setProductData(data)
         setIsLoading(false)
         
