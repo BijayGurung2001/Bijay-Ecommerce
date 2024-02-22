@@ -1,16 +1,15 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 export const ProductContext= createContext({});
 
-export function ProductProvider(props){
+ function ProductProvider (props){
     const {productData, isLoading, isError}=useFetch("https://fakestoreapi.com/products")
     return(
-        <ProductProvider.Provider value={{productData, isLoading, isError}}>
-            {props.children}
-        </ProductProvider.Provider>
+        <ProductContext.Provider value={{productData, isLoading, isError}}>
+{props.children}
+        </ProductContext.Provider>
     )
 }
-export const useProductContext=()=>{
-    return useContext(ProductContext)
-}
+
+export default ProductProvider;
