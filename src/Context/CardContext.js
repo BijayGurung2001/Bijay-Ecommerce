@@ -12,15 +12,16 @@ const cartReducer=(state,action)=>{
             default:
                 return state;
     };
-const CartProvider =({children})=>{
+};
+const CartProvider =({props})=>{
     const [state, dispatch]=useReducer(cartReducer,{cartItems:[]})
     const addToCart=(items)=>{
-        dispatch({tyoe:'ADD_TO_CART', payload:item})
+        dispatch({type:'ADD_TO_CART', payload.item})
 
     }
     return(
         <CartContext.Provider value={{cartItems:state.cartItems, addToCart}}>
-            {children}
+            {props.children}
         </CartContext.Provider>
     )
 }
@@ -34,4 +35,4 @@ const useCart=()=>{
     }
     return context;
 }
-export {cartProvider, useCart};
+export {CartProvider, useCart};
